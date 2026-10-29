@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+  <ItemGroup>
+    <AvaloniaXaml Remove="Resources\Images\**" />
+    <Compile Remove="Resources\Images\**" />
+    <EmbeddedResource Remove="Resources\Images\**" />
+    <None Remove="Resources\Images\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\black-bishop.png" />
+    <None Remove="Resources\black-king.png" />
+    <None Remove="Resources\black-knight.png" />
+    <None Remove="Resources\black-pawn.png" />
+    <None Remove="Resources\black-queen.png" />
+    <None Remove="Resources\black-rook.png" />
+    <None Remove="Resources\white-bishop.png" />
+    <None Remove="Resources\white-king.png" />
+    <None Remove="Resources\white-knight.png" />
+    <None Remove="Resources\white-pawn.png" />
+    <None Remove="Resources\white-queen.png" />
+    <None Remove="Resources\white-rook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Resources\black-bishop.png" />
+    <AvaloniaResource Include="Resources\black-king.png" />
+    <AvaloniaResource Include="Resources\black-knight.png" />
+    <AvaloniaResource Include="Resources\black-pawn.png" />
+    <AvaloniaResource Include="Resources\black-queen.png" />
+    <AvaloniaResource Include="Resources\black-rook.png" />
+    <AvaloniaResource Include="Resources\white-bishop.png" />
+    <AvaloniaResource Include="Resources\white-king.png" />
+    <AvaloniaResource Include="Resources\white-knight.png" />
+    <AvaloniaResource Include="Resources\white-pawn.png" />
+    <AvaloniaResource Include="Resources\white-queen.png" />
+    <AvaloniaResource Include="Resources\white-rook.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.1" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.1.0" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Cecs475.BoardGames.Chess.ConsoleView">
+      <HintPath>..\..\lib\Cecs475.BoardGames.Chess.ConsoleView.dll</HintPath>
+    </Reference>
+    <Reference Include="Cecs475.BoardGames.Chess.Model">
+      <HintPath>..\..\lib\Cecs475.BoardGames.Chess.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

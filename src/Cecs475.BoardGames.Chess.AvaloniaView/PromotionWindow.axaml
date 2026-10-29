@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d" d:DesignWidth="120" d:DesignHeight="120"
+  x:Class="Cecs475.BoardGames.Chess.AvaloniaView.PromotionWindow"
+  SystemDecorations="None"
+  CanResize="False"
+  ShowInTaskbar="False"
+  Topmost="True">
+
+  <Border Background="DarkGray" Padding="3" CornerRadius="3">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+      <TextBlock Text="Promote pawn to:" FontWeight="Bold" HorizontalAlignment="Center"/>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+        <Border Name="btnKnight" Background="Transparent" CornerRadius="4" PointerEntered="OnPiecePointerEnter" PointerExited="OnPiecePointerExit" PointerPressed="OnPromoteKnight">
+          <Image Name="imgKnight" Width="48" Height="48" Stretch="Uniform" Margin="4"/>
+        </Border>
+        <Border Name="btnBishop" Background="Transparent" CornerRadius="4" PointerEntered="OnPiecePointerEnter" PointerExited="OnPiecePointerExit" PointerPressed="OnPromoteBishop">
+          <Image Name="imgBishop" Width="48" Height="48" Stretch="Uniform" Margin="4"/>
+        </Border>
+        <Border Name="btnRook" Background="Transparent" CornerRadius="4" PointerEntered="OnPiecePointerEnter" PointerExited="OnPiecePointerExit" PointerPressed="OnPromoteRook">
+          <Image Name="imgRook" Width="48" Height="48" Stretch="Uniform" Margin="4"/>
+        </Border>
+        <Border Name="btnQueen" Background="Transparent" CornerRadius="4" PointerEntered="OnPiecePointerEnter" PointerExited="OnPiecePointerExit" PointerPressed="OnPromoteQueen">
+          <Image Name="imgQueen" Width="48" Height="48" Stretch="Uniform" Margin="4"/>
+        </Border>
+      </StackPanel>
+    </StackPanel>
+  </Border>
+</Window>

@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:local="clr-namespace:Cecs475.BoardGames.Chess.AvaloniaView"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="Cecs475.BoardGames.Chess.AvaloniaView.ChessView"
+			 x:DataType="local:ChessViewModel"
+			 DataContext="{StaticResource vm}">
+	<UserControl.Resources>
+		<local:ChessViewModel x:Key="vm"/>
+		<!-- TODO: declare other static resources, like converters. -->
+		<local:PieceImageConverter x:Key="PieceImageConverter"/>
+		<local:ChessSquareBackgroundMultiConverter x:Key="ChessSquareBackgroundMultiConverter"/>
+	</UserControl.Resources>
+	<StackPanel Orientation="Vertical">
+		<!-- <Button Content="Undo Move" Click="UndoButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/> -->
+
+	<ItemsControl x:Name="BoardPositions" ItemsSource="{Binding Squares}" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<UniformGrid Rows="8" Columns="8" Background="Blue" />
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Border BorderBrush="Black" BorderThickness="0.5" Width="68" Height="68">
+						<Panel PointerEntered="Panel_PointerEntered" PointerExited="Panel_PointerExited" PointerReleased="Panel_PointerReleased">
+							<Panel.Background>
+								<MultiBinding Converter="{StaticResource ChessSquareBackgroundMultiConverter}">
+									<Binding Path="Row" />
+									<Binding Path="Col" />
+									<Binding Path="IsSelected" />
+									<Binding Path="IsHovered" />
+									<Binding Path="IsHighlighted" />
+									<Binding Path="IsKingInCheck" />
+								</MultiBinding>
+							</Panel.Background>
+							<Grid>
+								<Image Source="{Binding Piece, Converter={StaticResource PieceImageConverter}}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+								<!-- Debug: REMOVE just checking values are good -->
+								<!-- <TextBlock Text="{Binding Piece}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="10"/> -->
+							</Grid>
+						</Panel>
+					</Border>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+
+	</StackPanel>
+</UserControl>
